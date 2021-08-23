@@ -21,7 +21,7 @@ function onGeoOk(position) {
 
       city.innerText = `You're in ${data.name}`;
       weatherCondition.innerText = `날씨 : ${data.weather[0].main}`;
-      weatherTemper.innerText = `기온 : ${data.main.temp}°`;
+      weatherTemper.innerText = `기온 : ${data.main.temp} °`;
       // json파일에서 name, main, temp 속성을 받아 HTML 텍스트로 표시
     });
 }
