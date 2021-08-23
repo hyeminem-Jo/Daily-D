@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/greetings.js"></script>
+  <script defer src="js/clock.js"></script>
+  <script defer src="js/quotes.js"></script>
+  <script defer src="js/background.js"></script>
+  <script defer src="js/todo.js"></script>
+  <script src="js/weather.js"></script>
+  <title>Momentum</title>
+</head>
+
+<body>
+  <div class="main-wrap">
+    <div class="heading">
+      <h2 id="clock">00:00</h2>
+      <h1 id="greeting" class="hidden"></h1>
+      <form id="login-form" class="hidden">
+        <input required maxlength="15" type="text" placeholder="What is your name?" />
+        <input type="submit" value="Log In" />
+      </form>
+    </div>
+    <div id="quote">
+      <button class="btn-quote">Today's Quote</button>
+      <span class="quote"></span>
+      <span class="author"></span>
+    </div>
+  </div>
+  <!-- TODO LIST ------------------- -->
+  <div class="todo">
+    <button class="btn-todo">To Do List</button>
+    <div class="todo-wrap">
+      <form id="todo-form" action="">
+        <input type="text" placeholder="Write a To Do and Press Enter" required />
+        <input class="add" type="submit" value="+">
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+  </div>
+  <!-- WEATHER ------------------- -->
+  <div id="weather">
+    <span class="city"></span>
+    <span class="temperature"></span>
+    <i class="fa fa-cloud"></i><span class="weather"></span>
+  </div>
+</body>
+
+</html>
