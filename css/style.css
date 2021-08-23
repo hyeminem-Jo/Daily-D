@@ -317,6 +317,7 @@ body {
   font-size:2.5rem;
 }
 
-#weather .fa-cloud {
+#weather .cloud {
   margin-right: 10px;
+  transform: translateY(5px);
 }
