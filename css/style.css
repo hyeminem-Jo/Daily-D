@@ -1,5 +1,6 @@
 ul,
 li {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -118,7 +119,7 @@ body {
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.39);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.288);
-  margin-bottom: 180px;
+  margin-bottom: 250px;
 }
 
 #quote {
@@ -196,12 +197,44 @@ body {
   transform: translateX(0%);
 }
 
-#todo-list li {
+label.completed {
+  text-decoration: line-through;
+}
+
+#todo-list .todo__item {
   margin-top: 10px;
   transition: .3s;
 }
 
-#todo-list li:hover > button {
+#todo-list .todo__item input[type=checkbox] {
+  display: none;
+}
+
+.todo__item label {
+  font-size: 1.2rem;
+  display: inline-block;
+  height: 30px;
+  padding: 0;
+}
+
+.todo__item em {
+  border: 3px solid #ddd;
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  margin: 0;
+  margin-right: 8px;
+  transform: translateY(7px);
+}
+
+#todo-list .todo__item input[type=checkbox]:checked + label em {
+  background: url(../img/outline_done_white_24dp.png) no-repeat center;
+  background-size: 95%;
+  background-color: #ccc;
+}
+
+#todo-list .todo__item:hover > button {
   visibility: visible;
 }
 
@@ -247,14 +280,40 @@ body {
 
 #todo-form {
   margin-bottom: 35px;
+  position: relative;
+}
+
+#todo-form::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #aaa;
+  transition: .3s;
+}
+
+#todo-form.focused::before {
+  width: 85%;
 }
 
 #todo-form input[type=text] {
   border: none;
-  border-bottom: 2px solid;
+  border-bottom: 3px solid #ddd;
   outline: none;
   padding: 10px;
   width: 80%;
+  font-size: 1.1rem;
+}
+
+#todo-form input[type=text]::placeholder {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+#todo-form input[type=text]:focus::placeholder {
+  opacity: 0;
 }
 
 #todo-form .add {
@@ -270,11 +329,6 @@ body {
 
 #todo-list {
   margin-top: 15px;
-  /* border: 1px solid; */
-}
-
-#todo-list li {
-  margin-left: 15px;
 }
 
 #greeting {
