@@ -3,22 +3,21 @@ const toDoInput = toDoForm.querySelector("input")
 const toDoList = document.getElementById("todo-list")
 const toDoBtn = document.querySelector(".btn-todo")
 
-let toDos = [] // 동일 코드 -------------------
+let toDos = [] 
 
-const TODO_KEY = "todos" // 동일 코드 -------------------
+const TODO_KEY = "todos" 
 
-function deleteToDo(event) { // 동일 코드 -------------------
+function deleteToDo(event) { 
   const li = event.target.parentElement
   toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id))
   li.remove()
   saveToDos()
 }
 
-function saveToDos() { // 동일 코드 -------------------
+function saveToDos() { 
   localStorage.setItem(TODO_KEY, JSON.stringify(toDos))
 }
 
-// ---------------------------------------------------------
 function paintToDo(newToDo) {
   const li = document.createElement("li")
   li.classList.add('todo__item')
@@ -58,7 +57,7 @@ function toggleToDo(event) {
   label.classList.toggle('completed')
 
   toDos.forEach(function (toDo) {
-    if (toDo.id === Number(li.id)) { // toDo 중 내가 누른 toDo 만 골라서 적용한다는 뜻
+    if (toDo.id === Number(li.id)) { 
       if (toDo.completed === true) {
         toDo.completed = false
       } else {
@@ -70,9 +69,7 @@ function toggleToDo(event) {
   saveToDos()
 }
 
-// ---------------------------------------------------------
-
-function handleToDoSubmit(event) { // 동일 코드 -------------------
+function handleToDoSubmit(event) { 
   event.preventDefault()
   const newToDo = toDoInput.value
   toDoInput.value = ""
@@ -86,7 +83,7 @@ function handleToDoSubmit(event) { // 동일 코드 -------------------
   saveToDos()
 }
 
-toDoForm.addEventListener("submit", handleToDoSubmit) // 동일 코드 ---------
+toDoForm.addEventListener("submit", handleToDoSubmit) 
 
 const toDoInputFocus = toDoForm.querySelector('input:first-child')
 toDoInputFocus.addEventListener('focus', function() {
@@ -97,15 +94,15 @@ toDoInputFocus.addEventListener('blur', function() {
   this.setAttribute('placeholder', '오늘의 할일을 입력해보세요 :)')
 })
 
-const savedToDos = localStorage.getItem(TODO_KEY) // 동일 코드 -------------------
+const savedToDos = localStorage.getItem(TODO_KEY) 
 
-if (savedToDos !== null) { // 동일 코드 -------------------
+if (savedToDos !== null) { 
   const parsedToDos = JSON.parse(savedToDos)
   toDos = parsedToDos
   parsedToDos.forEach(paintToDo)
 }
 
-function clickToDo() { // 신경 x -------------------
+function clickToDo() { 
   const mainWrap = document.querySelector(".main-wrap")
   const toDoWrap = document.querySelector(".todo")
   const weather = document.getElementById("weather")
@@ -115,4 +112,4 @@ function clickToDo() { // 신경 x -------------------
   weather.classList.toggle("active")
 }
 
-toDoBtn.addEventListener("click", clickToDo) // 신경 x -------------------
+toDoBtn.addEventListener("click", clickToDo) 
