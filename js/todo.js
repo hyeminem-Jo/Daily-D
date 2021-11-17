@@ -1,7 +1,6 @@
 const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input")
 const toDoList = document.getElementById("todo-list")
-const toDoBtn = document.querySelector(".btn-todo")
 
 let toDos = [] 
 
@@ -96,20 +95,11 @@ toDoInputFocus.addEventListener('blur', function() {
 
 const savedToDos = localStorage.getItem(TODO_KEY) 
 
+// 새로고침 후 저장된 데이터 다시 불러오기 및 해당 데이터 업데이트
 if (savedToDos !== null) { 
   const parsedToDos = JSON.parse(savedToDos)
+  // (데이터)로컬저장소에 저장됐던 데이터 다시 toDos 데이터로 넣기
   toDos = parsedToDos
+  // (화면)불러온 데이터 화면에 표시
   parsedToDos.forEach(paintToDo)
 }
-
-function clickToDo() { 
-  const mainWrap = document.querySelector(".main-wrap")
-  const toDoWrap = document.querySelector(".todo")
-  const weather = document.getElementById("weather")
-  mainWrap.classList.toggle("active")
-  toDoWrap.classList.toggle("active")
-  this.classList.toggle("active")
-  weather.classList.toggle("active")
-}
-
-toDoBtn.addEventListener("click", clickToDo) 

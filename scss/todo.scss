@@ -1,0 +1,119 @@
+// Todo
+.todo {
+  background-color: #fff;
+
+  .center {
+    width: 470px;
+  }
+
+  #todo-form {
+    margin-bottom: 35px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #aaa;
+      transition: 0.3s;
+    }
+
+    &.focused::before {
+      width: 85%;
+    }
+
+    input[type="text"] {
+      border: none;
+      border-bottom: 3px solid #ddd;
+      outline: none;
+      padding: 10px;
+      width: 85%;
+      font-size: 1.3rem;
+    }
+
+    input[type="text"]::placeholder {
+      opacity: 1;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus::placeholder {
+      opacity: 0;
+    }
+
+    .add {
+      border: none;
+      margin-left: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      float: right;
+    }
+  }
+
+  #todo-list {
+    margin-top: 15px;
+
+    .todo__item {
+      margin-top: 10px;
+      transition: 0.3s;
+
+      label {
+        font-size: 1.4rem;
+        display: inline-block;
+        height: 30px;
+        padding: 0;
+      }
+
+      em {
+        border: 3px solid #ddd;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin: 0;
+        margin-right: 8px;
+        transform: translateY(7px);
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      input[type="checkbox"]:checked+label em {
+        background: url(../img/outline_done_white_24dp.png) no-repeat center;
+        background-size: 95%;
+        background-color: #ccc;
+      }
+
+      &:hover>.todo__delete {
+        visibility: visible;
+      }
+
+      .todo__delete {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        margin-left: 10px;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        padding-left: 4px;
+        text-align: center;
+        visibility: hidden;
+
+        &:hover {
+          background-color: #eee;
+        }
+      }
+
+      .completed {
+        text-decoration: line-through;
+      }
+    }
+  }
+}

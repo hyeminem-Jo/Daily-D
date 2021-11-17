@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/todo.ac5e157e.css">
+  <link rel="stylesheet" href="/paint.f6f3eaf1.css">
+  <link rel="stylesheet" href="/calculator.cb8e7e70.css">
+  <link rel="stylesheet" href="/style.a6dae8f7.css">
+  <script defer="" src="/greetings.bc7eefb3.js"></script>
+  <script defer="" src="/clock.9ff9a60b.js"></script>
+  <script defer="" src="/quotes.acd9b62c.js"></script>
+  <script defer="" src="/todo.52169671.js"></script>
+  <script defer="" src="/weather.2dcc02e5.js"></script>
+  <script defer="" src="/calculator.16600844.js"></script>
+  <script defer="" src="/paint.5973282d.js"></script>
+  <script defer="" src="/main.fb6bbcaf.js"></script>
+  <title>Daily-D</title>
+<script src="/todo.ac5e157e.js"></script><script src="/paint.f6f3eaf1.js"></script><script src="/calculator.cb8e7e70.js"></script><script src="/style.a6dae8f7.js"></script></head>
+
+<body>
+  <div class="all-wrap">
+    <img class="clip" src="/clip.1ca4ba9d.png" alt="clip">
+    <!-- MAIN FUNCTION -->
+    <div class="main-function">
+      <!-- TODO LIST ------------------- -->
+      <div class="todo">
+        <h2 class="title">To Do List</h2>
+        <div class="center">
+          <div class="todo-wrap">
+            <form id="todo-form" action="">
+              <input type="text" placeholder="오늘의 할일을 입력해보세요 :)" required="">
+              <input class="add" type="submit" value="+">
+            </form>
+            <ul id="todo-list"></ul>
+          </div>
+        </div>
+      </div>
+      <!-- PICUTRE DAIRY -->
+      <div class="paint hidden">
+        <h2 class="title">PICTURE DAIRY</h2>
+        <div class="center">
+          <canvas id="jsCanvas" class="canvas"></canvas>
+          <div class="controls">
+            <div class="flex">
+              <div class="controls__range">
+                <input type="range" id="jsRange" min="0.1" max="10" value="5" step="0.1">
+              </div>
+              <div class="controls__btns">
+                <button id="jsMode">Fill</button>
+                <button id="jsSave">Save</button>
+              </div>
+            </div>
+            <div class="controls__colors">
+              <div class="controls__color jsColor" style="background-color: #2c2c2c;"></div>
+              <div class="controls__color jsColor" style="background-color: #fff;"></div>
+              <div class="controls__color jsColor" style="background-color: #ff3b30;"></div>
+              <div class="controls__color jsColor" style="background-color: #ff9500;"></div>
+              <div class="controls__color jsColor" style="background-color: #ffcc00;"></div>
+              <div class="controls__color jsColor" style="background-color: #4cd963;"></div>
+              <div class="controls__color jsColor" style="background-color: #5ac8fa;"></div>
+              <div class="controls__color jsColor" style="background-color: #0579ff;"></div>
+              <div class="controls__color jsColor" style="background-color: #5956d6;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- CALCULATOR -->
+      <div class="calculator hidden">
+        <h2 class="title">Calculator</h2>
+        <div class="center">
+          <div class="row">
+            <input readonly="" id="operator">
+            <input readonly="" type="number" id="result">
+          </div>
+          <div class="row">
+            <button id="num-7">7</button>
+            <button id="num-8">8</button>
+            <button id="num-9">9</button>
+            <button id="plus">+</button>
+          </div>
+          <div class="row">
+            <button id="num-4">4</button>
+            <button id="num-5">5</button>
+            <button id="num-6">6</button>
+            <button id="minus">-</button>
+          </div>
+          <div class="row">
+            <button id="num-1">1</button>
+            <button id="num-2">2</button>
+            <button id="num-3">3</button>
+            <button id="divide">/</button>
+          </div>
+          <div class="row">
+            <button id="clear">C</button>
+            <button id="num-0">0</button>
+            <button id="calculate">=</button>
+            <button id="multifly">x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SUB FUNCTION -->
+    <div class="sub-function">
+      <!-- LOGIN ------------------- -->
+      <div class="login">
+        <form id="login-form" class="hidden">
+          <div class="flex">
+            <input required="" maxlength="15" type="text" placeholder="What is your name?">
+            <input type="submit" value="Log In">
+          </div>
+        </form>
+        <div id="user" class="hidden">
+          <h1 id="greeting"></h1>
+          <div class="flex">
+            <h1 id="user-name"></h1>
+            <button id="edit"><i class="material-icons">edit</i></button>
+          </div>
+        </div>
+      </div>
+      <!-- CLOCK -->
+      <h2 id="clock">00:00</h2>
+      <div class="wrap">
+        <!-- QUOTE --------------------------------- -->
+        <div id="quote">
+          <span class="quote"></span>
+          <span class="author"></span>
+        </div>
+        <!-- WEATHER ------------------- -->
+        <div id="weather">
+          <span class="city"></span>
+          <span class="temperature"></span>
+          <i class="material-icons cloud">cloud</i>
+          <span class="weather"></span>
+        </div>
+      </div>
+      <!-- BTNS -->
+      <div class="btns">
+        <button id="btn-todo">
+          <img src="/btn-todo-icon.79f2a7ea.png" alt="">
+        </button>
+        <button id="btn-paint">
+          <img class="opacity" src="/btn-paint-icon.cd8486ae.png" alt="">
+        </button>
+        <button id="btn-calculate">
+          <img class="opacity" src="/btn-calculator-icon.8091b2f5.png" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

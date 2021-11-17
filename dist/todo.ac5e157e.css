@@ -1,0 +1,102 @@
+.todo {
+  background-color: #fff;
+}
+.todo .center {
+  width: 470px;
+}
+.todo #todo-form {
+  margin-bottom: 35px;
+  position: relative;
+}
+.todo #todo-form::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #aaa;
+  transition: 0.3s;
+}
+.todo #todo-form.focused::before {
+  width: 85%;
+}
+.todo #todo-form input[type=text] {
+  border: none;
+  border-bottom: 3px solid #ddd;
+  outline: none;
+  padding: 10px;
+  width: 85%;
+  font-size: 1.3rem;
+}
+.todo #todo-form input[type=text]::placeholder {
+  opacity: 1;
+  transition: 0.3s;
+}
+.todo #todo-form input[type=text]:focus::placeholder {
+  opacity: 0;
+}
+.todo #todo-form .add {
+  border: none;
+  margin-left: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  float: right;
+}
+.todo #todo-list {
+  margin-top: 15px;
+}
+.todo #todo-list .todo__item {
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.todo #todo-list .todo__item label {
+  font-size: 1.4rem;
+  display: inline-block;
+  height: 30px;
+  padding: 0;
+}
+.todo #todo-list .todo__item em {
+  border: 3px solid #ddd;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0;
+  margin-right: 8px;
+  transform: translateY(7px);
+}
+.todo #todo-list .todo__item input[type=checkbox] {
+  display: none;
+}
+.todo #todo-list .todo__item input[type=checkbox]:checked + label em {
+  background: url(/outline_done_white_24dp.af33992d.png) no-repeat center;
+  background-size: 95%;
+  background-color: #ccc;
+}
+.todo #todo-list .todo__item:hover > .todo__delete {
+  visibility: visible;
+}
+.todo #todo-list .todo__item .todo__delete {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding-left: 4px;
+  text-align: center;
+  visibility: hidden;
+}
+.todo #todo-list .todo__item .todo__delete:hover {
+  background-color: #eee;
+}
+.todo #todo-list .todo__item .completed {
+  text-decoration: line-through;
+}
+
+/*# sourceMappingURL=/todo.ac5e157e.css.map */

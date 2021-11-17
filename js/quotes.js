@@ -27,15 +27,15 @@ const quotes = [{
     author: "헬렌 켈러(Helen Keller)"
   },
   {
-    quote: "자신의 본성이 어떤것이든 그에 충실하라 . 자신이 가진 재능의 끈을 놓아 버리지 마라. 본성이 이끄는 대로 따르면 성공할것이다",
+    quote: "자신의 본성이 어떤것이든 그에 충실하라. 자신이 가진 재능의 끈을 놓아 버리지 마라. 본성이 이끄는 대로 따르면 성공할것이다",
     author: "시드니 스미스(Sydney Smith)"
   },
   {
-    quote: "지금이야 말로 일할때다. 지금이야말로 싸울때다. 지금이야말로 나를 더 훌륭한 사람으로 만들때다 오늘 그것을 못하면 내일 그것을 할수있는가",
+    quote: "지금이야 말로 일할때다. 지금이야말로 싸울때다. 지금이야말로 나를 더 훌륭한 사람으로 만들때다 오늘 그것을 못하면 내일 그것을 할 수 있는가",
     author: "토마스 아켐피스  (Thomas Akempis)"
   },
   {
-    quote: "삶이 그대를 속일지라도 슬퍼하거나 노하지 말아라 슬픈 날에 참고 견디라 . 즐거운 날은 오고야 말리니 마음은 미래를 바라느니 현재는 한없이 우울한것 모든건 하염없이 사라지나가 버리고 그리움이 되리니",
+    quote: "삶이 그대를 속일지라도 슬퍼하거나 노하지 말아라 슬픈 날에 참고 견디라 . 즐거운 날은 오고야 말리니",
     author: "푸쉬킨(Pushkin)"
   }
 ]
@@ -46,4 +46,4 @@ const author = document.querySelector("#quote .author")
 const todayQuote = quotes[Math.floor(Math.random() * quotes.length)]
 
 quote.innerText = `"${todayQuote.quote}"`
-author.innerText = `- ${todayQuote.author} -`
+author.innerText = `${todayQuote.author}`
