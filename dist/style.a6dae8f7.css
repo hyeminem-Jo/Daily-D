@@ -1,6 +1,6 @@
 body {
   background-color: #E5E5E5;
-  padding: 70px 140px;
+  overflow: hidden;
 }
 
 * {
@@ -24,10 +24,30 @@ li {
   opacity: 0.2;
 }
 
-body {
-  overflow: hidden;
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: hide 0.1s 2.5s;
+  animation-fill-mode: both;
+}
+.loading-page .logo {
+  transform: scale(50%);
 }
 
+@keyframes hide {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 .bg-image {
   position: fixed;
   top: 0;
@@ -38,8 +58,8 @@ body {
 
 .all-wrap {
   position: relative;
-  margin: 0;
-  width: 100%;
+  margin: 60px auto;
+  width: 80%;
   height: 83vh;
   display: flex;
   justify-content: space-between;
@@ -49,7 +69,6 @@ body {
   transform: scale(40%);
   top: -320px;
   left: -78px;
-  z-index: 1000;
 }
 
 .main-function {
@@ -70,16 +89,15 @@ body {
   height: 100%;
   top: 0;
   left: 0;
+  overflow-y: scroll;
 }
 .main-function .todo .center,
 .main-function .paint .center,
 .main-function .calculator .center {
-  position: absolute;
-  top: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
-  height: 100%;
+  margin: 0 auto;
+  margin-top: 130px;
+  width: 450px;
+  height: calc(100% - 130px);
 }
 .main-function .todo .title,
 .main-function .paint .title,

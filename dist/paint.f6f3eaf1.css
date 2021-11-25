@@ -1,12 +1,11 @@
 .paint .center {
   top: 90px !important;
   width: 100%;
-  overflow: hidden;
 }
 
 .canvas {
-  width: 580px;
-  height: 480px;
+  width: 450px;
+  height: 450px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 93, 0.11);

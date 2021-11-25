@@ -9,8 +9,8 @@ const saveBtn = document.getElementById("jsSave")
 const INITIAL_COLOR = "#2c2c2c"
 
 // js - canvas 크기 정의
-canvas.width = 580
-canvas.height = 480
+canvas.width = 450
+canvas.height = 450
 
 // 선 스타일, 동작 default 값 -----------------------------------------
 ctx.fillStyle = "#fff"

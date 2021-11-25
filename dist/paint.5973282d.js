@@ -128,8 +128,8 @@ var range = document.getElementById("jsRange");
 var saveBtn = document.getElementById("jsSave");
 var INITIAL_COLOR = "#2c2c2c"; // js - canvas 크기 정의
 
-canvas.width = 580;
-canvas.height = 480; // 선 스타일, 동작 default 값 -----------------------------------------
+canvas.width = 450;
+canvas.height = 450; // 선 스타일, 동작 default 값 -----------------------------------------
 
 ctx.fillStyle = "#fff";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -278,7 +278,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65066" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49499" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
