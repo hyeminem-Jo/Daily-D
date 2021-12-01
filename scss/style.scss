@@ -1,23 +1,21 @@
-@mixin box-shadow {
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.281);
-}
+@import './reset.scss';
+@import './todo.scss';
+@import './paint.scss';
+@import './calculator.scss';
 
 body {
   background-color: #E5E5E5;
   overflow: hidden;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+@mixin box-shadow {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.281);
 }
 
-ul,
-li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+@mixin center-position {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .hidden {
@@ -29,16 +27,14 @@ li {
 }
 
 .loading-page {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include center-position;
   background-color: #fff;
   width: 100%;
   height: 100vh;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   animation: hide .1s 2.5s;
   animation-fill-mode: both;
 
@@ -63,12 +59,12 @@ li {
 }
 
 .all-wrap {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   margin: 60px auto;
   width: 80%;
   height: 83vh;
-  display: flex;
-  justify-content: space-between;
 
   .clip {
     position: absolute;
@@ -92,11 +88,9 @@ li {
   .todo,
   .paint,
   .calculator {
-    position: absolute;
+    @include center-position;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
     overflow-y: scroll ;
 
     .center {
@@ -108,9 +102,7 @@ li {
 
     .title {
       background-color: #848484;
-      position: absolute;
-      top: 0;
-      left: 0;
+      @include center-position;
       width: 100%;
       height: 90px;
       line-height: 90px;
@@ -160,7 +152,6 @@ li {
     button {
       width: 90px;
       height: 90px;
-      cursor: pointer;
       font-size: 1.5rem;
       background-color: #eee;
 
@@ -179,9 +170,9 @@ li {
 
   .login {
     position: absolute;
-    width: 130%;
     top: 0;
     right: 0;
+    width: 130%;
     display: flex;
     align-items: center;
     height: 180px;
@@ -242,7 +233,6 @@ li {
         margin-left: 20px;
         color: #fff;
         transition: 0.2s;
-        cursor: pointer;
 
         &:hover {
           color: #333;
@@ -266,12 +256,10 @@ li {
       }
 
       #edit {
-        border: none;
         width: 30px;
         background-color: transparent;
         color: rgb(165, 165, 165);
         transform: scale(1.7) translateY(8px);
-        cursor: pointer;
         margin-left: 13px;
         margin-top: 7px;
         height: 100%;
@@ -305,9 +293,7 @@ li {
 
   // QUOTE
   #quote {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include center-position;
     width: 65%;
     height: 100%;
     padding: 25px;
@@ -321,14 +307,12 @@ li {
     background-color: #fff;
 
     &::after {
-      position: absolute;
+      @include center-position;
       content: 'Motivation';
       color: #fff;
       font-size: 2rem;
       text-align: center;
       line-height: 180px;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       background-color: #477DA9;
@@ -401,13 +385,11 @@ li {
 
     button {
       position: relative;
-      border: none;
       width: 110px;
       height: 110px;
       border-radius: 50%;
       margin-right: 15px;
       transition: .2s;
-      cursor: pointer;
       background-color: #fff;
       @include box-shadow;
 
@@ -425,14 +407,7 @@ li {
       position: absolute;
     }
 
-    #btn-todo {
-      img {
-        top: -130px;
-        left: -130px;
-      }
-    }
-
-    #btn-paint {
+    #btn-todo, #btn-paint, #btn-calculate {
       img {
         top: -130px;
         left: -130px;
@@ -441,7 +416,6 @@ li {
 
     #btn-calculate {
       img {
-        top: -130px;
         left: -103px;
       }
     }

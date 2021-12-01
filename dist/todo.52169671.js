@@ -118,9 +118,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/todo.js":[function(require,module,exports) {
-var toDoForm = document.getElementById("todo-form");
-var toDoInput = toDoForm.querySelector("input");
-var toDoList = document.getElementById("todo-list");
+var $toDoForm = document.getElementById("todo-form");
+var $toDoInput = $toDoForm.querySelector("input");
+var $toDoList = document.getElementById("todo-list");
 var toDos = [];
 var TODO_KEY = "todos";
 
@@ -163,7 +163,7 @@ function paintToDo(newToDo) {
   li.appendChild(label);
   label.prepend(em);
   li.appendChild(button);
-  toDoList.appendChild(li);
+  $toDoList.appendChild(li);
 }
 
 function toggleToDo(event) {
@@ -184,8 +184,8 @@ function toggleToDo(event) {
 
 function handleToDoSubmit(event) {
   event.preventDefault();
-  var newToDo = toDoInput.value;
-  toDoInput.value = "";
+  var newToDo = $toDoInput.value;
+  $toDoInput.value = "";
   var newToDoObj = {
     text: newToDo,
     id: Date.now(),
@@ -196,22 +196,20 @@ function handleToDoSubmit(event) {
   saveToDos();
 }
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
-var toDoInputFocus = toDoForm.querySelector('input:first-child');
-toDoInputFocus.addEventListener('focus', function () {
-  toDoForm.classList.add('focused');
+$toDoForm.addEventListener("submit", handleToDoSubmit);
+var $toDoInputFocus = $toDoForm.querySelector('input:first-child');
+$toDoInputFocus.addEventListener('focus', function () {
+  $toDoForm.classList.add('focused');
 });
-toDoInputFocus.addEventListener('blur', function () {
-  toDoForm.classList.remove('focused');
+$toDoInputFocus.addEventListener('blur', function () {
+  $toDoForm.classList.remove('focused');
   this.setAttribute('placeholder', '오늘의 할일을 입력해보세요 :)');
 });
 var savedToDos = localStorage.getItem(TODO_KEY); // 새로고침 후 저장된 데이터 다시 불러오기 및 해당 데이터 업데이트
 
 if (savedToDos !== null) {
-  var parsedToDos = JSON.parse(savedToDos); // (데이터)로컬저장소에 저장됐던 데이터 다시 toDos 데이터로 넣기
-
-  toDos = parsedToDos; // (화면)불러온 데이터 화면에 표시
-
+  var parsedToDos = JSON.parse(savedToDos);
+  toDos = parsedToDos;
   parsedToDos.forEach(paintToDo);
 }
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -242,7 +240,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49499" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49840" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

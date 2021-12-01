@@ -118,14 +118,14 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/clock.js":[function(require,module,exports) {
-var clock = document.querySelector("h2#clock");
+var $clock = document.querySelector("h2#clock");
 
 function getClock() {
   var date = new Date();
   var hours = String(date.getHours()).padStart(2, "0");
   var minutes = String(date.getMinutes()).padStart(2, "0");
   var seconds = String(date.getSeconds()).padStart(2, "0");
-  clock.innerText = "".concat(hours, ":").concat(minutes, ":").concat(seconds);
+  $clock.innerText = "".concat(hours, ":").concat(minutes, ":").concat(seconds);
 }
 
 getClock();
@@ -158,7 +158,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49499" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49840" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

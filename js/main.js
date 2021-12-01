@@ -1,4 +1,3 @@
-// import "./greetings.js";
 
 // Btns
 const $btnToDo = document.querySelector("#btn-todo");

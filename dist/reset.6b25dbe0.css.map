@@ -1,0 +1,1 @@
+{"version":3,"sources":["scss/reset.scss"],"names":[],"mappings":"AACA;EACE;EACA;EACA;;;AAGF;AAAA;EAEE;EACA;EACA;;;AAGF;EACE;EACA","file":"reset.6b25dbe0.css","sourceRoot":"..","sourcesContent":["\n* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nul,\nli {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\nbutton {\n  cursor: pointer;\n  border: none;\n}"]}

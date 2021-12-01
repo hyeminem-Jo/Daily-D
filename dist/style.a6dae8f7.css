@@ -1,8 +1,3 @@
-body {
-  background-color: #E5E5E5;
-  overflow: hidden;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -16,6 +11,203 @@ li {
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.todo {
+  background-color: #fff;
+}
+.todo .center {
+  width: 470px;
+}
+.todo #todo-form {
+  margin-bottom: 35px;
+  position: relative;
+}
+.todo #todo-form::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #aaa;
+  transition: 0.3s;
+}
+.todo #todo-form.focused::before {
+  width: 85%;
+}
+.todo #todo-form input[type=text] {
+  border: none;
+  border-bottom: 3px solid #ddd;
+  outline: none;
+  padding: 10px;
+  width: 85%;
+  font-size: 1.3rem;
+}
+.todo #todo-form input[type=text]::placeholder {
+  opacity: 1;
+  transition: 0.3s;
+}
+.todo #todo-form input[type=text]:focus::placeholder {
+  opacity: 0;
+}
+.todo #todo-form .add {
+  border: none;
+  margin-left: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  float: right;
+}
+.todo #todo-list {
+  margin-top: 15px;
+}
+.todo #todo-list .todo__item {
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.todo #todo-list .todo__item label {
+  font-size: 1.4rem;
+  display: inline-block;
+  height: 30px;
+  padding: 0;
+}
+.todo #todo-list .todo__item em {
+  border: 3px solid #ddd;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0;
+  margin-right: 8px;
+  transform: translateY(7px);
+}
+.todo #todo-list .todo__item input[type=checkbox] {
+  display: none;
+}
+.todo #todo-list .todo__item input[type=checkbox]:checked + label em {
+  background: url(/outline_done_white_24dp.af33992d.png) no-repeat center;
+  background-size: 95%;
+  background-color: #ccc;
+}
+.todo #todo-list .todo__item:hover > .todo__delete {
+  visibility: visible;
+}
+.todo #todo-list .todo__item .todo__delete {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding-left: 4px;
+  text-align: center;
+  visibility: hidden;
+}
+.todo #todo-list .todo__item .todo__delete:hover {
+  background-color: #eee;
+}
+.todo #todo-list .todo__item .completed {
+  text-decoration: line-through;
+}
+
+.paint .center {
+  top: 90px !important;
+  width: 100%;
+}
+
+.canvas {
+  width: 450px;
+  height: 450px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 93, 0.11);
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.controls .flex {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.controls .controls__range {
+  margin-top: 15px;
+  margin-right: 20px;
+}
+.controls .controls__range,
+.controls .controls__btns {
+  margin-bottom: 20px;
+}
+.controls .controls__range button,
+.controls .controls__btns button {
+  border: none;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 0 5px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 93, 0.11);
+  font-size: 1rem;
+  transition: 0.2s;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #333;
+}
+.controls .controls__colors {
+  display: flex;
+}
+.controls .controls__colors .controls__color {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 93, 0.11);
+  border-radius: 50%;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.controls .controls__colors .controls__color:active {
+  transform: translateY(3px);
+  box-shadow: 0 0px 2px rgba(50, 50, 93, 0.11), 0 1px 0px rgba(0, 0, 93, 0.11);
+}
+
+.calculator #result,
+.calculator #operator,
+.calculator button {
+  height: 50px;
+  margin: 5px;
+}
+.calculator #result {
+  width: 180px;
+  text-align: right;
+}
+.calculator #operator {
+  width: 90px;
+  height: 90px;
+  text-align: center;
+}
+.calculator button {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+body {
+  background-color: #E5E5E5;
+  overflow: hidden;
+}
+
 .hidden {
   display: none;
 }
@@ -25,6 +217,9 @@ li {
 }
 
 .loading-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -32,9 +227,6 @@ li {
   width: 100%;
   height: 100vh;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   animation: hide 0.1s 2.5s;
   animation-fill-mode: both;
 }
@@ -57,12 +249,12 @@ li {
 }
 
 .all-wrap {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   margin: 60px auto;
   width: 80%;
   height: 83vh;
-  display: flex;
-  justify-content: space-between;
 }
 .all-wrap .clip {
   position: absolute;
@@ -85,10 +277,10 @@ li {
 .main-function .paint,
 .main-function .calculator {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
 }
 .main-function .todo .center,
@@ -145,7 +337,6 @@ li {
 .main-function .calculator button {
   width: 90px;
   height: 90px;
-  cursor: pointer;
   font-size: 1.5rem;
   background-color: #eee;
 }
@@ -159,9 +350,9 @@ li {
 }
 .sub-function .login {
   position: absolute;
-  width: 130%;
   top: 0;
   right: 0;
+  width: 130%;
   display: flex;
   align-items: center;
   height: 180px;
@@ -214,7 +405,6 @@ li {
   margin-left: 20px;
   color: #fff;
   transition: 0.2s;
-  cursor: pointer;
 }
 .sub-function .login #login-form input[type=submit]:hover {
   color: #333;
@@ -231,12 +421,10 @@ li {
   font-size: 3.5rem;
 }
 .sub-function .login #user #edit {
-  border: none;
   width: 30px;
   background-color: transparent;
   color: #a5a5a5;
   transform: scale(1.7) translateY(8px);
-  cursor: pointer;
   margin-left: 13px;
   margin-top: 7px;
   height: 100%;
@@ -279,13 +467,13 @@ li {
 }
 .sub-function #quote::after {
   position: absolute;
+  top: 0;
+  left: 0;
   content: "Motivation";
   color: #fff;
   font-size: 2rem;
   text-align: center;
   line-height: 180px;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background-color: #477DA9;
@@ -346,13 +534,11 @@ li {
 }
 .sub-function .btns button {
   position: relative;
-  border: none;
   width: 110px;
   height: 110px;
   border-radius: 50%;
   margin-right: 15px;
   transition: 0.2s;
-  cursor: pointer;
   background-color: #fff;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.281);
 }
@@ -366,16 +552,11 @@ li {
   transform: scale(17%);
   position: absolute;
 }
-.sub-function .btns #btn-todo img {
-  top: -130px;
-  left: -130px;
-}
-.sub-function .btns #btn-paint img {
+.sub-function .btns #btn-todo img, .sub-function .btns #btn-paint img, .sub-function .btns #btn-calculate img {
   top: -130px;
   left: -130px;
 }
 .sub-function .btns #btn-calculate img {
-  top: -130px;
   left: -103px;
 }
 

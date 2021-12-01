@@ -117,140 +117,79 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/paint.js":[function(require,module,exports) {
-var canvas = document.getElementById("jsCanvas");
-var body = document.querySelector("body");
-var ctx = canvas.getContext("2d"); // 드로잉 context 에 접근
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-var colors = document.getElementsByClassName("jsColor");
-var mode = document.getElementById("jsMode");
-var range = document.getElementById("jsRange");
-var saveBtn = document.getElementById("jsSave");
-var INITIAL_COLOR = "#2c2c2c"; // js - canvas 크기 정의
-
-canvas.width = 450;
-canvas.height = 450; // 선 스타일, 동작 default 값 -----------------------------------------
-
-ctx.fillStyle = "#fff";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.strokeStyle = INITIAL_COLOR;
-ctx.fillStyle = INITIAL_COLOR;
-ctx.lineWidth = 5;
-var painting = false;
-var filling = false; // Function -----------------------------------------
-
-function stopPainting() {
-  painting = false;
-}
-
-function startPainting() {
-  painting = true;
-} // 선 그리기 (painting)
-
-
-function onMouseMove(event) {
-  var x = event.offsetX; // 마우스 좌표 변수화
-
-  var y = event.offsetY;
-
-  if (!painting) {
-    // 아직 안그릴 때(false) 작동 (캔버스에 클릭 안된 상태)
-    ctx.beginPath(); // 경로 생성
-
-    ctx.moveTo(x, y); // 시작점 좌표 지정
-  } else {
-    ctx.lineTo(x, y);
-    ctx.stroke();
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
-} // 마우스가 캔버스 밖으로 갔다가 요소 안으로 다시 들어왔을 때 시작점 좌표 재할당
 
+  return bundleURL;
+}
 
-function onMouseEnter(event) {
-  x = event.offsetX;
-  y = event.offsetY;
-  ctx.moveTo(x, y);
-} // 색 지정 (controls color)
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-
-function colorClickHandler(event) {
-  var color = event.target.style.backgroundColor;
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
-} // toggle(paint / fill) 버튼 이벤트 
-
-
-function modeClickHandler() {
-  if (!filling) {
-    // filling = false 상태일 때 실행 (초기값)
-    filling = true;
-    mode.innerText = "Paint";
-  } else {
-    // filling = true 상태일 때 실행
-    filling = false;
-    mode.innerText = "Fill";
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
   }
-} // canvas 누르면 실행 (filling) 
 
+  return '/';
+}
 
-function canvasClickHandler() {
-  if (filling) {
-    // filling 활성화 (= true) 상태일 때 실행
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
   }
-} // 선 굵기 조정 input
 
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
 
-function rangeChangeHandler(event) {
-  var size = event.target.value;
-  ctx.lineWidth = size;
-} // context menual (우클릭)기능 막기
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
 
-
-function CM_Handler(event) {
-  event.preventDefault();
-} // canvas 의 데이터를 image 로 얻고 download
-
-
-function saveClickHandler() {
-  var image = canvas.toDataURL();
-  var link = document.createElement("a");
-  link.href = image;
-  link.download = "PaintJS[🎨]";
-  link.click();
-} // AddEventListener -----------------------------------------
-
-
-if (canvas) {
-  canvas.addEventListener("mousemove", onMouseMove);
-  canvas.addEventListener("mousedown", startPainting);
-  canvas.addEventListener("mouseenter", onMouseEnter);
-  canvas.addEventListener("click", canvasClickHandler);
-  canvas.addEventListener("contextmenu", CM_Handler);
-} // 선을 canvas 바깥까지 그리 상태에서 클릭을 뗀 상태에 캔버스 안에 다시 들어와도 선이 그려지는 오류
-// 해결 : mouseup 이벤트를 canvas 에 국한시키지 않고 body 전체에 적용
-// 클릭을 떼면 canvas 내에서 뿐만이 아닌, 아예 painting 이 멈춤
-
-
-body.addEventListener("mouseup", stopPainting);
-Array.from(colors).forEach(function (color) {
-  return color.addEventListener("click", colorClickHandler);
-}); // colors[] array 생성 >> 각 item 에 클릭 이벤트 처리
-
-if (mode) {
-  // toggle 버튼 이벤트 >> FILL mode / PAINT mode 
-  mode.addEventListener("click", modeClickHandler);
+    cssTimeout = null;
+  }, 50);
 }
 
-if (range) {
-  // 선굵기 조정 input 이벤트 
-  range.addEventListener("input", rangeChangeHandler);
-}
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/reset.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
 
-if (saveBtn) {
-  // 파일 저장 이벤트
-  saveBtn.addEventListener("click", saveClickHandler);
-}
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -454,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/paint.js"], null)
-//# sourceMappingURL=/paint.5973282d.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/reset.6b25dbe0.js.map
