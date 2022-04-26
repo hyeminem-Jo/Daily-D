@@ -1,15 +1,14 @@
-
-// Btns
+// buttons
 const $btnToDo = document.querySelector("#btn-todo");
 const $btnPaint = document.querySelector("#btn-paint");
 const $btnCalculate = document.querySelector("#btn-calculate");
 
-// Btns Image
+// buttons Image
 const $btnToDoImg = document.querySelector("#btn-todo img");
 const $btnPaintImg = document.querySelector("#btn-paint img");
 const $btnCalculateImg = document.querySelector("#btn-calculate img");
 
-// Function
+// function
 const $toDo = document.querySelector(".todo");
 const $paint = document.querySelector(".paint");
 const $calculate = document.querySelector(".calculator");

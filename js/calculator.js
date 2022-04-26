@@ -41,7 +41,7 @@ const onClickOperator = (event) => {
     $operator.value = event.target.textContent
   } else if (event.target.textContent === '-') {
     numOne += '-'
-    $result.value = '0' // '-' 같이 음수표시가 안됨 ㅠ
+    $result.value = '0' 
   }
 }
 

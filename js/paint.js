@@ -1,6 +1,6 @@
 const canvas = document.getElementById("jsCanvas")
 const body = document.querySelector("body")
-const ctx = canvas.getContext("2d") // 드로잉 context 에 접근
+const ctx = canvas.getContext("2d") 
 const colors = document.getElementsByClassName("jsColor")
 const mode = document.getElementById("jsMode")
 const range = document.getElementById("jsRange")
@@ -8,11 +8,9 @@ const saveBtn = document.getElementById("jsSave")
 
 const INITIAL_COLOR = "#2c2c2c"
 
-// js - canvas 크기 정의
 canvas.width = 450
 canvas.height = 450
 
-// 선 스타일, 동작 default 값 -----------------------------------------
 ctx.fillStyle = "#fff"
 ctx.fillRect(0, 0, canvas.width, canvas.height)
 ctx.strokeStyle = INITIAL_COLOR
@@ -22,7 +20,6 @@ ctx.lineWidth = 5;
 let painting = false
 let filling = false
 
-// Function -----------------------------------------
 function stopPainting() {
   painting = false
 }
@@ -31,13 +28,12 @@ function startPainting() {
   painting = true
 }
 
-// 선 그리기 (painting)
 function onMouseMove(event) {
-  let x = event.offsetX // 마우스 좌표 변수화
+  let x = event.offsetX 
   let y = event.offsetY
-  if (!painting) { // 아직 안그릴 때(false) 작동 (캔버스에 클릭 안된 상태)
-    ctx.beginPath() // 경로 생성
-    ctx.moveTo(x, y) // 시작점 좌표 지정
+  if (!painting) { 
+    ctx.beginPath() 
+    ctx.moveTo(x, y) 
   } else {
     ctx.lineTo(x, y)
     ctx.stroke()
@@ -58,20 +54,20 @@ function colorClickHandler(event) {
   ctx.fillStyle = color
 }
 
-// toggle(paint / fill) 버튼 이벤트 
+// toggle 버튼 이벤트 
 function modeClickHandler() {
-  if (!filling) { // filling = false 상태일 때 실행 (초기값)
+  if (!filling) { 
     filling = true
     mode.innerText = "Paint"
-  } else { // filling = true 상태일 때 실행
+  } else { 
     filling = false
     mode.innerText = "Fill"
   }
 }
 
-// canvas 누르면 실행 (filling) 
+// canvas 누르면 실행
 function canvasClickHandler() {
-  if (filling) { // filling 활성화 (= true) 상태일 때 실행
+  if (filling) { 
     ctx.fillRect(0, 0, canvas.width, canvas.height)
   }
 }
@@ -105,14 +101,11 @@ if (canvas) {
   canvas.addEventListener("contextmenu", CM_Handler)
 }
 
-// 선을 canvas 바깥까지 그리 상태에서 클릭을 뗀 상태에 캔버스 안에 다시 들어와도 선이 그려지는 오류
-// 해결 : mouseup 이벤트를 canvas 에 국한시키지 않고 body 전체에 적용
-// 클릭을 떼면 canvas 내에서 뿐만이 아닌, 아예 painting 이 멈춤
 body.addEventListener("mouseup", stopPainting) 
 
-Array.from(colors).forEach(color => color.addEventListener("click", colorClickHandler)) // colors[] array 생성 >> 각 item 에 클릭 이벤트 처리
+Array.from(colors).forEach(color => color.addEventListener("click", colorClickHandler)) 
 
-if (mode) { // toggle 버튼 이벤트 >> FILL mode / PAINT mode 
+if (mode) { // toggle 버튼 이벤트
   mode.addEventListener("click", modeClickHandler)
 }
 
