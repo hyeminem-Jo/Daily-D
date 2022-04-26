@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -24,12 +24,12 @@
 
 <body>
   <div class="loading-page">
-    <img class="logo" src="./img/Daily-D_logo.png" alt="">
+    <img class="logo" src="./img/Daily-D_logo.png" alt="Daily-D">
   </div>
   <div class="all-wrap">
-    <img class="clip" src="img/clip.png" alt="clip">
+    <img class="clip" src="img/clip.png" alt="clip" aria-hidden="true">
     <!-- MAIN FUNCTION -->
-    <div class="main-function">
+    <section class="main-function">
       <!-- TODO LIST ------------------- -->
       <div class="todo">
         <h2 class="title">To Do List</h2>
@@ -106,9 +106,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- SUB FUNCTION -->
-    <div class="sub-function">
+    <section class="sub-function">
       <!-- LOGIN ------------------- -->
       <div class="login">
         <form id="login-form" class="hidden">
@@ -141,19 +141,19 @@
           <span class="weather"></span>
         </div>
       </div>
-      <!-- BTNS -->
+      <!-- BUTTONS -->
       <div class="btns">
         <button id="btn-todo">
-          <img src="./img/btn-todo-icon.png" alt="">
+          <img src="./img/btn-todo-icon.png" alt="todo-list">
         </button>
         <button id="btn-paint">
-          <img class="opacity" src="./img/btn-paint-icon.png" alt="">
+          <img class="opacity" src="./img/btn-paint-icon.png" alt="paint">
         </button>
         <button id="btn-calculate">
-          <img class="opacity" src="./img/btn-calculator-icon.png" alt="">
+          <img class="opacity" src="./img/btn-calculator-icon.png" alt="calculator">
         </button>
       </div>
-    </div>
+    </section>
   </div>
 </body>
 
